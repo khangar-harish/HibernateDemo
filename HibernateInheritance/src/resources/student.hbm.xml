@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    	<class name="com.hash.Student" table="Student1" discriminator-value="stud">
+    		<id name="id" column="sid">
+    			<generator class="increment"></generator>
+    		</id>
+    		<discriminator column="type" type="string"></discriminator> 
+    		<property name="name" column="sname"/>
+    		<property name="email" column="semail"/>
+    		
+    		<subclass name="com.hash.SchoolStudent" discriminator-value="sch_stud">  
+			<property name="board" column="sboard"></property>  
+			<!-- <property name="temp" column="temp"></property> -->  
+			</subclass>  
+			            
+			<subclass name="com.hash.CollegeStudent" discriminator-value="col_stud">  
+			<property name="university" column="suniversity"></property>  
+			<property name="trade" column="strade"></property>  
+			</subclass>  
+    	</class>
+    </hibernate-mapping>
